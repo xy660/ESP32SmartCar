@@ -5,7 +5,7 @@ namespace ESPRCServer
 {
     internal class Program
     {
-        static string errorPage = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\nCao Ni Ma , Diao Ni Ma Bi Wo Jie Kou Ne";
+        static string errorPage = "HTTP/1.1 200 OK\r\nContent-Type: text/plain\r\n\r\n this api is not http page";
         static int port = 1234;
         class ConnectPair
         {
@@ -253,3 +253,4 @@ namespace ESPRCServer
         }
     }
 }
+
