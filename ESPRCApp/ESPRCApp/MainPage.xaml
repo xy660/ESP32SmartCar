@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ESPRC遥控器.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Frame BorderColor="LightPink"  Grid.Row="1" Grid.Column="1">
+            <StackLayout>
+                <Label FontSize="Title" HorizontalTextAlignment="Center">登录到服务器</Label>
+                <Label>服务器IP地址：</Label>
+                <Entry x:Name="IPAddressInput" Text="192.168.137.1"/>
+                <Label>端口号：</Label>
+                <Entry x:Name="PortInput" Text="1234"/>
+                <Label>身份码：</Label>
+                <Entry x:Name="UserTokenInput" Text="11451419"/>
+                <Button x:Name="ConnectBtn" Text="连接服务器" Clicked="ConnectBtn_Clicked" CornerRadius="10"/>
+                <Label x:Name="CodeVersionDisplay" Text="版本：N/A"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
