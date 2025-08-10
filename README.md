@@ -21,7 +21,20 @@ ESP32远程控制小车，支持公网远程控制，手机app遥控
 
 ## 电路连接图
 
-（还没画完呢）
+默认代码连接图，如需修改引脚需要修改源码
+
+```plain
+
+GPIO27---l298n.IN1
+GPIO26---l298n.IN2
+GPIO14---l298n.IN3
+GPIO12---l298n.IN4
+GPIO13---转向架舵机PWM信号
+GPIO17---外设mos管/继电器控制
+GPIO16---外设舵机PWM信号
+GPIO32---电源电压输入（需要分压至ESP32 ADC可接受范围内）
+
+```
 
 ## 部署步骤
 
@@ -36,4 +49,14 @@ ESP32远程控制小车，支持公网远程控制，手机app遥控
 5. 编译手机app项目或者PC winforms上位机项目，通过服务器IP和身份码连接到小车，即可开始控制
 
 ## 成品示例图
+
+### 4G远程小车（需要搭配网络摄像头和USB随身WIFI使用）
+
+![1](https://github.com/xy660/ESP32SmartCar/raw/main/imgs/1.jpg)
+
+### 水弹战车
+
+![2](https://github.com/xy660/ESP32SmartCar/raw/main/imgs/2.jpg)
+
+
 
