@@ -36,6 +36,7 @@ int engineMotorPinRB = D8;
 int VBatInputPin = A0;
 int rotateServoPin = D4;
 float ADCDelta = 3.3f / 1024.0f;
+float ADCScale = 5.0f;
 bool reverseEngineL = true; //反转动力电机
 bool reverseEngineR = true; //反转动力电机
 int engineSpeedPWM = 500;
@@ -88,7 +89,7 @@ int EEPReadInt(int addr)
 
 float getRawVBat()
 {
-  return analogRead(VBatInputPin) * ADCDelta * 5; 
+  return analogRead(VBatInputPin) * ADCDelta * ADCScale; 
 }
 float getVBat()
 {
@@ -449,4 +450,5 @@ void loop() {
   {
     connectServer();
   }
+
 }
