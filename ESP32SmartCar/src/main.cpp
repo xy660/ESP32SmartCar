@@ -41,6 +41,7 @@ int shootPitchServoPin = 16; //发射器俯仰舵机信号线
 int shootFireMOSPin = 17; //发射器开火控制使能信号线
 
 float ADCDelta = 3.3f / 4095.0f;  //adc精度
+float ADCScale = 5.0f;
 bool reverseEngineL = true; //反转动力电机
 bool reverseEngineR = true; //反转动力电机
 int engineSpeedPWM = 500;
@@ -93,7 +94,7 @@ int EEPReadInt(int addr)
 
 float getRawVBat()
 {
-  return analogRead(VBatInputPin) * ADCDelta * 5; 
+  return analogRead(VBatInputPin) * ADCDelta * ADCScale; 
 }
 float getVBat()
 {
@@ -507,4 +508,5 @@ void loop() {
   {
     connectServer();
   }
+
 }
