@@ -92,9 +92,9 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ESPRC遥控器\ESPRC遥控器.csproj">
-      <Project>{6B125D27-0543-4D78-88D1-F0AA883067DA}</Project>
-      <Name>ESPRC遥控器</Name>
+    <ProjectReference Include="..\ESPRCApp\ESPRCApp.csproj">
+      <Project>{92ff4edf-8cbd-4ec1-ac02-366355486bee}</Project>
+      <Name>ESPRCApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
