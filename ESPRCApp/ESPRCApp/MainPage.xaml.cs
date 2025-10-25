@@ -15,7 +15,7 @@ namespace ESPRC遥控器
         public MainPage()
         {
             InitializeComponent();
-            CodeVersionDisplay.Text = "版本：1.0";
+            CodeVersionDisplay.Text = "版本：1.1";
         }
 
         private void ConnectBtn_Clicked(object sender, EventArgs e)

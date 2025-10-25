@@ -36,39 +36,53 @@
                 <Button x:Name="shootButton" Text="开火" Grid.Column="1" Pressed="shootButton_Pressed" Released="shootButton_Released"/>
             </Grid>
             <Frame x:Name="MenuContent" BorderColor="Green" Margin="10" Grid.Row="5" Grid.ColumnSpan="5" >
-                <Grid>
-                    <Grid x:Name="FPVViewBody" IsVisible="false">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="50"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
-                        <forms:SKCanvasView Background="black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="skView" />
-                        <Button Grid.Row="0" Grid.Column="0" x:Name="backButton" Text="返回菜单" Clicked="backButton_Clicked"/>
-                    </Grid>
-                    <StackLayout x:Name="MenuBody">
-                        <Label Margin="10,0">车辆速度：</Label>
-                        <Slider x:Name="CarPWMSpeed" ValueChanged="CarPWMSpeed_ValueChanged" Maximum="1023" Minimum="0" Margin="0,0" MinimumTrackColor="Green" MaximumTrackColor="Green"/>
-                        <Label Margin="10,0">校准电压计（输入万用表测得实际电压）：</Label>
-                        <Grid>
+                <ScrollView>
+                    <Grid>
+                        <Grid x:Name="FPVViewBody" IsVisible="false">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
-                            <Entry x:Name="ActuallyVolt"/>
-                            <Button x:Name="CommitVolBtn" Text="校准" Clicked="CommitVolBtn_Clicked" Grid.Column="1"/>
+                            <forms:SKCanvasView Background="black" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="skView" />
+                            <Button Grid.Row="0" Grid.Column="0" x:Name="backButton" Text="返回菜单" Clicked="backButton_Clicked"/>
                         </Grid>
-                        <Label Margin="10,0">车辆类型</Label>
-                        <Picker x:Name="CarType" SelectedIndex="0">
-                            <Picker.Items>
-                                <x:String>舵机阿克曼车/差速车</x:String>
-                                <x:String>直流电机阿克曼车</x:String>
-                            </Picker.Items>
-                        </Picker>
-                        <Button x:Name="SwitchToFPV" Text="切换到摄像头画面" Clicked="SwitchToFPV_Clicked"/>
-                    </StackLayout>
-                </Grid>
+                        <StackLayout x:Name="MenuBody">
+                            <Label Margin="10,0">车辆速度：</Label>
+                            <Slider x:Name="CarPWMSpeed" ValueChanged="CarPWMSpeed_ValueChanged" Maximum="1023" Minimum="0" Margin="0,0" MinimumTrackColor="Green" MaximumTrackColor="Green"/>
+                            <Label Margin="10,0">电压计设置（实际值校准/自动关机截止电压设置）：</Label>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="120"/>
+                                </Grid.ColumnDefinitions>
+                                <Entry x:Name="ActuallyVolt" Text="0"/>
+                                <Button x:Name="CommitVolBtn" Text="校准电压计" Clicked="CommitVolBtn_Clicked" Grid.Column="1"/>
+                                <Button x:Name="CommitShutdownVolBtn" Text="设置截止电压" Clicked="CommitShutdownVolBtn_Clicked" Grid.Column="2"/>
+                            </Grid>
+                            <Label Margin="10,0">睡眠/关机设置：</Label>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="100"/>
+                                </Grid.ColumnDefinitions>
+                                <Entry x:Name="SleepTimeEntry" Placeholder="休眠时间，单位秒，关机填0"/>
+                                <Button x:Name="StartSleepBtn" Text="开始休眠" Clicked="StartSleepBtn_Clicked" Grid.Column="1"/>
+                            </Grid>
+                            <Label Margin="10,0">车辆类型</Label>
+                            <Picker x:Name="CarType" SelectedIndex="0">
+                                <Picker.Items>
+                                    <x:String>舵机阿克曼车/差速车</x:String>
+                                    <x:String>直流电机阿克曼车</x:String>
+                                </Picker.Items>
+                            </Picker>
+                            
+                            <Button x:Name="SwitchToFPV" Text="切换到摄像头画面" Clicked="SwitchToFPV_Clicked"/>
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
             </Frame>
         </Grid>
     </ContentPage.Content>

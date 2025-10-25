@@ -162,6 +162,19 @@ namespace ESPRC遥控器
                                 {
                                     DisplayAlert("", "电压计校准完成！", "确定");
                                 });
+                            }else if (p[1] == 2)
+                            {
+                                this.Dispatcher.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("", "设置关机电压成功", "确定");
+                                });
+                            }
+                            else if (p[1] == 3)
+                            {
+                                this.Dispatcher.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("", "小车即将在5秒后休眠/关机", "确定");
+                                });
                             }
                         }
                     }
@@ -200,6 +213,20 @@ namespace ESPRC遥控器
                 psd[0] = 4;
                 pf[1] = vbat;
                 psd[2] = 0;
+                psd[3] = 0;
+            }
+            s.Send(sd);
+        }
+        static unsafe void sendShutdownVol(Socket s, float vbat)
+        {
+            var sd = new byte[16];
+            fixed (byte* p = sd)
+            {
+                int* psd = (int*)p;
+                float* pf = (float*)p;
+                psd[0] = 7;
+                psd[1] = 1;
+                pf[2] = vbat;
                 psd[3] = 0;
             }
             s.Send(sd);
@@ -288,6 +315,21 @@ namespace ESPRC遥控器
         {
             FPVViewBody.IsVisible = false;
             MenuBody.IsVisible = true;
+        }
+
+        private void CommitShutdownVolBtn_Clicked(object sender, EventArgs e)
+        {
+            sendShutdownVol(connection,float.Parse(ActuallyVolt.Text));
+        }
+
+        private void StartSleepBtn_Clicked(object sender, EventArgs e)
+        {
+            if(SleepTimeEntry.Text == null || SleepTimeEntry.Text.Length == 0)
+            {
+                DisplayAlert("错误", "请输入要休眠的秒数", "确定");
+                return;
+            }
+            sendCommand(connection,7,2,int.Parse(SleepTimeEntry.Text));
         }
     }
 }
