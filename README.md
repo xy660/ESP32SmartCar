@@ -23,6 +23,8 @@ ESP32远程控制小车，支持公网远程控制，手机app遥控
 
 默认代码连接图，如需修改引脚需要修改源码
 
+![how_to_build](https://github.com/xy660/ESP32SmartCar/raw/main/imgs/how_to_build.bmp)
+
 ```plain
 
 GPIO27---l298n.IN1
@@ -32,7 +34,8 @@ GPIO12---l298n.IN4
 GPIO13---转向架舵机PWM信号
 GPIO17---外设mos管/继电器控制
 GPIO16---外设舵机PWM信号
-GPIO32---电源电压输入（需要分压至ESP32 ADC可接受范围内）
+GPIO34---电源电压输入（需要分压至ESP32 ADC可接受范围内）
+GPIO25---外设电源控制MOS管
 
 ```
 
